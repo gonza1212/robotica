@@ -2,6 +2,7 @@
 <a href="#" class="sidebar-link">Contraer</a>
 <hr>
 <a href="{{ route('tablero-futbol') }}" class="sidebar-link">Tablero de Fútbol</a>
+<a href="{{ route('robot.index') }}" class="sidebar-link">Robots</a>
 <hr>
 <a class="sidebar-link" href="#" onclick="event.preventDefault(); document.getElementById('logout_form').submit();">{{ __('Salir') }}</a>
 <form method="POST" action="{{ route('logout') }}" id="logout_form">

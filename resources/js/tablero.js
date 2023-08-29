@@ -6,6 +6,9 @@ if(document.getElementById("tablero_futbol")) {
     var sec = 0;
     var pause = true;
     var set = 1;
+    var silbato = new Audio('./sounds/whistle.wav');
+    var plus = new Audio('./sounds/beep1.wav');
+    var minus = new Audio('./sounds/beep2.wav');
 
     /** 
      * Listener para boton de gol local
@@ -53,7 +56,7 @@ if(document.getElementById("tablero_futbol")) {
     document.getElementById("restart").addEventListener("click", function(event) {
         event.preventDefault();
         restart();
-        stopTimer();
+        stopTimer(true);
     });
 
     /**
@@ -122,7 +125,7 @@ if(document.getElementById("tablero_futbol")) {
      * Tambien se encarga de cambiar el icono del boton
      */
     function toggleTimer() {
-        silbato();
+        tocarSilbato();
         if(pause) {
             document.getElementById("play_pause").innerHTML = '<i class="fa-solid fa-pause"></i>';
             document.getElementById("play_pause").classList = 'btn btn-secondary';
@@ -171,25 +174,27 @@ if(document.getElementById("tablero_futbol")) {
             if(!pause) {
                 runTimer();
             }
-        }, 1000);
+        }, 100);
     }
 
     /**
      * Detiene el reloj pero deja los ceros en pantalla
      */
-    function stopTimer() {
+    function stopTimer(restart = false) {
         document.getElementById("play_pause").innerHTML = '<i class="fa-solid fa-play"></i>';
         document.getElementById("play_pause").classList = 'btn btn-success';
         pause = true;
-        silbato();
+        if(!restart)
+            tocarSilbato();
     }
 
     /**
      * Reproduce el sonido del silbato si el tiempo comienza o termina
      */
-    function silbato() {
+    function tocarSilbato() {
         if(min == 5 || (min == 0 && sec == 0)) {
-            console.log("silbato");
+            //console.log("silbato");
+            silbato.play();
         }
     }
 

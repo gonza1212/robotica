@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TableroController;
+use App\Http\Controllers\RobotController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +34,5 @@ require __DIR__.'/auth.php';
 
 /** TABLERO */
 Route::get('/tablero-futbol', [TableroController::class, 'tableroFutbol'])->name('tablero-futbol');
+/** ROBOTS */
+Route::resource('/robot', RobotController::class)->middleware(['auth']);

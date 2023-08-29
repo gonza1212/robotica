@@ -7,6 +7,7 @@ import './tablero';
 import '../css/bootstrap.css';
 import '../css/app.css';
 import '../css/all.min.css';
+import '../css/sidebar.css';
 
 import Alpine from 'alpinejs';
 

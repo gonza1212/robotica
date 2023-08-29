@@ -1,0 +1,22 @@
+@media (prefers-color-scheme: dark) {
+    .sidebar-link {
+        color: white;
+    }
+    .sidebar-link:hover {
+        color: deepskyblue;
+    }
+}
+@media (prefers-color-scheme: light) {
+    .sidebar-link {
+        color: black;
+    }
+    .sidebar-link:hover {
+        color: deepskyblue;
+    }
+}
+.sidebar-link {
+    display: block;
+    margin: 0.5em 0 ;
+    transition: .5s;
+    text-decoration:none!important;
+}
