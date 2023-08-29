@@ -1,0 +1,46 @@
+@font-face {
+    font-family: clock;
+    src: url('./fonts/alarm clock.ttf');
+}
+
+#tablero_futbol {
+    height: 100vh;
+    background-image: url('./img/estadio.png');
+    background-image: no-repeat;
+    background-image: fixed;
+    background-image: center;
+    background-size: cover;
+}
+
+.text-futbol {
+    font-family: clock;
+    font-size: 10em;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.75);
+}
+
+.color-futbol, .text-futbol {
+    color:rgb(93, 186, 0);
+}
+
+.btn-x {
+    width: 100%;
+}
+
+.btn-sm {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.white-border {
+    border: solid 1px white;
+    border-radius: 5px;
+}
+
+#local, #scoreboard, #visitante {
+    background-color: rgba(0, 0, 0, 0.75);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.75), 0 6px 20px 0 rgba(0, 0, 0, 0.6);
+}
+
+#time {
+    font-size: 8em;
+}

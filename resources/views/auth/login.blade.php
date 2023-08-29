@@ -6,6 +6,7 @@
     <h2 class="mt-5">Ingresar</h2>
     <div class="row justify-content-center">
         <form method="POST" action="{{ route('login') }}" class="col-md-8 card mt-4" style="background-color: rgba(83, 83, 83, 0.1);">
+            <p class="mt-2 mb-0">email@falso.com<br>123456</p>
             <div class="card-body p-4">
                 @csrf
                 <!-- Email Address -->

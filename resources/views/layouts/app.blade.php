@@ -21,7 +21,7 @@
                     @include('layouts.navigation')
                 </div>
                 <!-- Main Content -->
-                <main class="col-md-11">
+                <main class="col-md-11 m-0 p-0">
                     {{ $slot }}
                 </main>
             </div>
