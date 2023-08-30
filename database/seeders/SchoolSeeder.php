@@ -20,5 +20,11 @@ class SchoolSeeder extends Seeder
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
+        DB::table('schools')->insert([
+            'name' => 'Esc. de Trelew',
+            'description' => 'Trelew',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
     }
 }

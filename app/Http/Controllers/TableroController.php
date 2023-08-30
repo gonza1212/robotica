@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Robot;
 
 class TableroController extends Controller
 {
@@ -14,6 +15,8 @@ class TableroController extends Controller
      * O de ultima, que pase por este metodo para devolver el tablero preferido del usuario
      */
     public function tableroFutbol() {
-        return view('futbol.tablero');
+        return view('futbol.tablero', [
+            'robots' => Robot::all(),
+        ]);
     }
 }

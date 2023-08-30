@@ -1,13 +1,15 @@
-import './bootstrap';
-import './bootstrap.bundle';
-import './all.min.js';
-import './tablero';
-
 /** CSS */
 import '../css/bootstrap.css';
 import '../css/app.css';
 import '../css/all.min.css';
 import '../css/sidebar.css';
+
+/** JS */
+import './bootstrap';
+import './bootstrap.bundle';
+import './all.min.js';
+import './tablero';
+import './utilities';
 
 import Alpine from 'alpinejs';
 

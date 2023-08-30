@@ -6,10 +6,8 @@
                 <div class="row m-0 p-2 white-border" id="local">
                     <div class="col-sm-12 mb-3">
                         <h6 class="color-futbol">LOCAL</h6>
-                        <select name="robot_id_local" id="robot_id_local" class="form-control mt-2 text-center fs-4">
-                            <option value="id">robot 1</option>
-                            <option value="id">robot 2</option>
-                            <option value="id">robot 3</option>
+                        <select name="robot_id_local" id="robot_id_local" class="form-control mt-2 text-center fs-4 text-muted">
+                            <option value="-1">Recuperando robots...</option>
                         </select>
                     </div>
                     <!-- Botones para modificar contador -->
@@ -26,7 +24,7 @@
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <p class="my-3 fs-4">Escuela N° XX</p>
+                        <p class="my-3 fs-4">-- Escuela --</p>
                     </div>
                 </div>
             </div>
@@ -57,10 +55,8 @@
                 <div class="row m-0 p-2 white-border" id="visitante">
                     <div class="col-sm-12 mb-3">
                         <h6 class="color-futbol">VISITANTE</h6>
-                        <select name="robot_id_visitante" id="robot_id_visitante" class="form-control mt-2 text-center fs-4">
-                            <option value="id">robot 1</option>
-                            <option value="id">robot 2</option>
-                            <option value="id">robot 3</option>
+                        <select name="robot_id_visitante" id="robot_id_visitante" class="form-control mt-2 text-center fs-4 text-muted">
+                            <option value="-1">Seleccione el local...</option>
                         </select>
                     </div>
                     <!-- Contador del visitante -->
@@ -77,7 +73,7 @@
                         <a href="#" id="anular_visitante" class="btn btn-outline-secondary btn-x mt-2"><i class="fa-solid fa-circle-minus"></i></a>
                     </div>
                     <div class="col-md-12">
-                        <p class="my-3 fs-4">Escuela N° XX</p>
+                        <p class="my-3 fs-4">-- Escuela --</p>
                     </div>
                 </div>
             </div>

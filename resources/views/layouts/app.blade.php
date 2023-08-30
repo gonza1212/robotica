@@ -10,8 +10,13 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.css" />
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+        <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.js"></script>
         <!-- Scripts -->
         @vite(['resources/js/app.js'])
+        <script>
+        </script>
     </head>
     <body>
         <div class="container-fluid">
@@ -21,7 +26,7 @@
                     @include('layouts.navigation')
                 </div>
                 <!-- Main Content -->
-                <main class="col-md-11 m-0 p-0">
+                <main class="col-md-11 m-0 py-0 px-2">
                     {{ $slot }}
                 </main>
             </div>
