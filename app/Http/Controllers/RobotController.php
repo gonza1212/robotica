@@ -34,4 +34,13 @@ class RobotController extends Controller
         Robot::create($request->all());
         return redirect()->route('robot.index');
     }
+
+    /**
+     * Devuelve la lista de robots en la BD
+     */
+    public function getForScoreboard() {
+        return response()->json([
+            'robots' => Robot::with('school')->get(),
+        ], 200);
+    }
 }

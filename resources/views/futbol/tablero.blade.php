@@ -24,7 +24,7 @@
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <p class="my-3 fs-4">-- Escuela --</p>
+                        <p class="my-3 fs-4" id="school_local">-- Escuela --</p>
                     </div>
                 </div>
             </div>
@@ -56,7 +56,7 @@
                     <div class="col-sm-12 mb-3">
                         <h6 class="color-futbol">VISITANTE</h6>
                         <select name="robot_id_visitante" id="robot_id_visitante" class="form-control mt-2 text-center fs-4 text-muted">
-                            <option value="-1">Seleccione el local...</option>
+                            <option value="-1">Recuperando robots...</option>
                         </select>
                     </div>
                     <!-- Contador del visitante -->
@@ -73,7 +73,7 @@
                         <a href="#" id="anular_visitante" class="btn btn-outline-secondary btn-x mt-2"><i class="fa-solid fa-circle-minus"></i></a>
                     </div>
                     <div class="col-md-12">
-                        <p class="my-3 fs-4">-- Escuela --</p>
+                        <p class="my-3 fs-4" id="school_visitante">-- Escuela --</p>
                     </div>
                 </div>
             </div>

@@ -36,3 +36,4 @@ require __DIR__.'/auth.php';
 Route::get('/tablero-futbol', [TableroController::class, 'tableroFutbol'])->name('tablero-futbol');
 /** ROBOTS */
 Route::resource('/robot', RobotController::class)->middleware(['auth']);
+Route::get('/get-robots-for-scoreboard', [RobotController::class, 'getForScoreboard'])->middleware(['auth'])->name('robot.get-for-scorebard');

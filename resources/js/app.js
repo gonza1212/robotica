@@ -11,6 +11,15 @@ import './all.min.js';
 import './tablero';
 import './utilities';
 
+/**
+ * Configuracion de AJAX
+ */
+$.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
 import Alpine from 'alpinejs';
 
 window.Alpine = Alpine;

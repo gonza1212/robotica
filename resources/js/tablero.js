@@ -9,6 +9,21 @@ if(document.getElementById("tablero_futbol")) {
     var silbato = new Audio('./sounds/whistle.wav');
     var plus = new Audio('./sounds/beep1.wav');
     var minus = new Audio('./sounds/beep2.wav');
+    var robots;
+
+    /**
+     * Recuperar robots desde BD
+     */
+    $.ajax({
+        type:'get',
+        url:'/get-robots-for-scoreboard',
+        data:'_token = <?php echo csrf_token() ?>',
+        success: function(data) {
+            //console.log({data});
+            robots = data.robots;
+            llenarRobotSelectors();
+        }
+    });
 
     /** 
      * Listener para boton de gol local
@@ -76,6 +91,20 @@ if(document.getElementById("tablero_futbol")) {
     });
 
     /**
+     * Listener para selector de equipo local
+     */
+    document.getElementById("robot_id_local").addEventListener("change", function() {
+        showSchool("local");
+    });
+
+    /**
+     * Listener para selector de equipo visitante
+     */
+    document.getElementById("robot_id_visitante").addEventListener("change", function() {
+        showSchool("visitante");
+    });
+
+    /**
      * Suma un gol al equipo seleccionado
      * @param {*} team 
      */
@@ -125,17 +154,22 @@ if(document.getElementById("tablero_futbol")) {
      * Tambien se encarga de cambiar el icono del boton
      */
     function toggleTimer() {
-        tocarSilbato();
         if(pause) {
-            document.getElementById("play_pause").innerHTML = '<i class="fa-solid fa-pause"></i>';
-            document.getElementById("play_pause").classList = 'btn btn-secondary';
+            if(equiposValidos()) {
+                document.getElementById("play_pause").innerHTML = '<i class="fa-solid fa-pause"></i>';
+                document.getElementById("play_pause").classList = 'btn btn-secondary';
+            }
         } else {
             document.getElementById("play_pause").innerHTML = '<i class="fa-solid fa-play"></i>';
             document.getElementById("play_pause").classList = 'btn btn-success';
         }
-        pause = !pause;
-        if(!pause)
-            runTimer();
+        if(equiposValidos()) {
+            pause = !pause;
+            if(!pause)
+                runTimer();
+            tocarSilbato();
+            showSet();
+        }
     }
 
     /**
@@ -174,7 +208,7 @@ if(document.getElementById("tablero_futbol")) {
             if(!pause) {
                 runTimer();
             }
-        }, 100);
+        }, 1000);
     }
 
     /**
@@ -203,7 +237,66 @@ if(document.getElementById("tablero_futbol")) {
      */
     function toggleSet() {
         set == 1 ? set ++ : set --;
+        showSet();
+    }
+
+    /**
+     * Actualiza el set en pantalla
+     */
+    function showSet() {
         document.getElementById("set").innerText = set + " / 2";
+        document.getElementById("title_set").classList = "color-futbol";
         document.getElementById("title_set").innerText = set + "° TIEMPO";
+    }
+
+    /**
+     * Arma la lista de robots en los select de local y visitante
+     */
+    function llenarRobotSelectors() {
+        document.getElementById("robot_id_local").innerHTML = '<option value="-1">Seleccione un robot...</option>';
+        document.getElementById("robot_id_visitante").innerHTML = '<option value="-1">Seleccione un robot...</option>';
+        for(let i=0; i<robots.length; i++) {
+            document.getElementById("robot_id_local").innerHTML += '<option value="'+robots[i].id+'" title="'+robots[i].school.name+'">'+robots[i].name+'</option>';
+            document.getElementById("robot_id_visitante").innerHTML += '<option value="'+robots[i].id+'" title="'+robots[i].school.name+'">'+robots[i].name+'</option>';
+        }
+        document.getElementById("robot_id_local").classList = "form-control mt-2 text-center fs-4";
+        document.getElementById("robot_id_visitante").classList = "form-control mt-2 text-center fs-4";
+    }
+
+    /**
+     * Se valida que no se comience el partido si los equipos son iguales
+     */
+    function equiposValidos() {
+        if(document.getElementById("robot_id_local").value == document.getElementById("robot_id_visitante").value) {
+            console.log("equipos iguales");
+            document.getElementById("title_set").innerText = "Los equipos son iguales";
+            document.getElementById("title_set").classList = "text-danger";
+            return false;
+        } else {
+            if(document.getElementById("robot_id_local").value < 0 || document.getElementById("robot_id_visitante").value < 0) {
+                console.log("no se eligio a uno o dos equipos");
+                document.getElementById("title_set").innerText = "Uno o ambos equipos son inválidos";
+                document.getElementById("title_set").classList = "text-danger";
+                return false;
+            }
+            console.log("equipos diferentes");
+            return true;
+        }
+    }
+
+    /**
+     * Muestra la escuela segun el equipo elegido
+     */
+    function showSchool(team) {
+        document.getElementById("school_"+team).innerText = (getRobotById(document.getElementById("robot_id_"+team).value) != null ? getRobotById(document.getElementById("robot_id_"+team).value).school.name : "-- Escuela --");
+    }
+
+    function getRobotById(id) {
+        for(let i=0; i<robots.length; i++) {
+            if(robots[i].id == id) {
+                return robots[i];
+            }
+        }
+        return null;
     }
 }
