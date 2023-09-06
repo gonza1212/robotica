@@ -10,6 +10,7 @@ import './bootstrap.bundle';
 import './all.min.js';
 import './tablero';
 import './utilities';
+import './robots';
 
 /**
  * Configuracion de AJAX

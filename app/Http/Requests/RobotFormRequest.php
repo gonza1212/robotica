@@ -22,12 +22,23 @@ class RobotFormRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'name' => ['required',
-            Rule::unique('robots', 'name')->where('school_id', $this->input('school_id')),
-            'min:3', 'max:20'],
-            'description' => ['nullable', 'min:4', 'max:255'],
-            'school_id' => ['required'],
-        ];
+        if($this->method() == 'post')
+            return [
+                'name' => ['required',
+                            Rule::unique('robots', 'name')->where('school_id', $this->input('school_id')),
+                            'min:3',
+                            'max:20'],
+                'description' => ['nullable', 'min:4', 'max:255'],
+                'school_id' => ['required'],
+            ];
+        else
+            return [
+                'name' => ['required',
+                            Rule::unique('robots', 'name')->ignore($this->robot)->where('school_id', $this->input('school_id'))->where('id', $this->input('id')),
+                            'min:3',
+                            'max:20'],
+                'description' => ['nullable', 'min:4', 'max:255'],
+                'school_id' => ['required'],
+            ];
     }
 }
