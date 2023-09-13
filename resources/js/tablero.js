@@ -179,9 +179,13 @@ if(document.getElementById("tablero_futbol")) {
     }
 
     /**
-     * reinicia el contador de tiempo a su valor inicial
+     * Reinicia el contador de tiempo a su valor inicial, los marcadores y los robots elegidos
      */
     function restart() {
+        // document.getRobotById("robot_local_id").value = -1;
+        // document.getRobotById("robot_visitante_id").value = -1;
+        // local = 0;
+        // visitante = 0;
         min = 5;
         sec = 0;
         showTime();
@@ -191,7 +195,7 @@ if(document.getElementById("tablero_futbol")) {
      * Muestra el tiempo actual en el tablero
      */
     function showTime() {
-        console.log("min:"+min+"|sec:"+sec);
+        //console.log("min:"+min+"|sec:"+sec);
         document.getElementById("time").innerText = min + ":" + (sec > 9 ? sec : "0" + sec);
     }
 
@@ -307,6 +311,11 @@ if(document.getElementById("tablero_futbol")) {
         document.getElementById("school_"+team).innerText = (getRobotById(document.getElementById("robot_id_"+team).value) != null ? getRobotById(document.getElementById("robot_id_"+team).value).school.name : "-- Escuela --");
     }
 
+    /**
+     * Devuelve el robot segun el id
+     * @param {*} id 
+     * @returns 
+     */
     function getRobotById(id) {
         for(let i=0; i<robots.length; i++) {
             if(robots[i].id == id) {
@@ -321,6 +330,29 @@ if(document.getElementById("tablero_futbol")) {
      * Si falla, muestra un mensaje en pantalla
      */
     function saveResult() {
-        console.log('asd');
+        document.getElementById("save_result").classList = "btn btn-secondary gap-2 disabled";
+        $.ajax({
+            type:'post',
+            url: '/games',
+            data: {
+                'local_id' : document.getElementById("robot_id_local").value,
+                'visitor_id' : document.getElementById("robot_id_visitante").value,
+                'local_score' : local,
+                'visitor_score' : visitante,
+                'finished' : 1,
+                'comments' : document.getElementById("comments").value, 
+            },
+            success: function(data) {
+                console.log("Guardado exitoso");
+                console.log({data});
+                window.location.href = "/tablero-futbol";
+            },
+            error: function(data) {
+                console.log("Error al guardar");
+                console.log({data});
+                alert("Error al guardar, intente nuevamente");
+            }
+
+        });
     }
 }

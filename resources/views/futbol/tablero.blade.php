@@ -29,10 +29,11 @@
                 </div>
             </div>
             <!-- RELOJ Y SET -->
-            <div class="col-md-4 px-3 py-2 mt-3">
-                <div class="row white-border py-4" id="scoreboard">
-                    <div class="col-md-12 mt-1 mb-3">
-                    <a href="#" class="btn" id="set_title_toggler" title="Click para alternar entre primer y segundo tiempo"><h3 class="color-futbol" id="title_set">1° TIEMPO</h3></a>
+            <div class="col-md-4 px-3 py-2 mt-2">
+                <div class="row white-border py-3" id="scoreboard">
+                    <div class="col-md-12 mb-3">
+                        <a href="#" class="btn" id="set_title_toggler" title="Click para alternar entre primer y segundo tiempo"><h3 class="color-futbol" id="title_set">1° TIEMPO</h3></a>
+                        <input type="text" class="input-futbol" name="comments" id="comments" placeholder="Instancia">
                         <div class="card mt-4">
                             <div class="card-body p-0">
                                 <h1 class="text-futbol" id="time">5:00</h1>
@@ -82,8 +83,30 @@
             </div>
         </div>
         <div class="row m-0" id="last_matches">
-            <div class="col-md-12 text-center">
-                <p><i>Últimos encuentros</i></p>
+            <div class="col-md-12 mt-3 mb-0 text-center">
+                <h5 class="mb-1"><i>Últimos encuentros</i></h5>
+                <div class="responsive-table">
+                    <table class="table-futbol">
+                        <thead>
+                            <tr>
+                                <th>Local</th>
+                                <th>Visitante</th>
+                                <th>Instancia</th>
+                                <th>Resultado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($games as $g)
+                            <tr>
+                                <td>{{ $g->local->name }} - {{ $g->local->school->name }}</td>
+                                <td>{{ $g->visitor->name }} - {{ $g->visitor->school->name }}</td>
+                                <td>{{ $g->comments }}</td>
+                                <td>{{ $g->local_score }} - {{ $g->visitor_score }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>    

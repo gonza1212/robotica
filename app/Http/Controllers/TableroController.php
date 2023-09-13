@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Robot;
+use App\Models\Game;
 
 class TableroController extends Controller
 {
@@ -17,6 +18,7 @@ class TableroController extends Controller
     public function tableroFutbol() {
         return view('futbol.tablero', [
             'robots' => Robot::all(),
+            'games' => Game::all(),
         ]);
     }
 }

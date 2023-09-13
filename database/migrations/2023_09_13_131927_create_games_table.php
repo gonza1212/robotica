@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('games', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('local')->constrained('robots');
-            $table->foreignId('visitor')->constrained('robots');
+            $table->foreignId('local_id')->constrained('robots');
+            $table->foreignId('visitor_id')->constrained('robots');
             $table->timestamp('start')->nullable();
             $table->tinyInteger('set')->unsigned()->default(1);
             $table->boolean('finished')->default(false);

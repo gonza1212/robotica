@@ -10,8 +10,8 @@ class Game extends Model
     use HasFactory;
 
     protected $fillable = [
-        'local',
-        'visitor',
+        'local_id',
+        'visitor_id',
         'start',
         'set',
         'finished',
@@ -20,7 +20,11 @@ class Game extends Model
         'comments',
     ];
 
-    public function robots() {
-        return $this->belongsToMany(Robot::class);
+    public function local() {
+        return $this->belongsTo(Robot::class, 'local_id');
+    }
+
+    public function visitor() {
+        return $this->belongsTo(Robot::class, 'visitor_id');
     }
 }
