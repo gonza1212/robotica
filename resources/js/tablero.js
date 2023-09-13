@@ -10,6 +10,7 @@ if(document.getElementById("tablero_futbol")) {
     var plus = new Audio('./sounds/beep1.wav');
     var minus = new Audio('./sounds/beep2.wav');
     var robots;
+    var deltaTime = 20;
 
     /**
      * Recuperar robots desde BD
@@ -103,6 +104,11 @@ if(document.getElementById("tablero_futbol")) {
     document.getElementById("robot_id_visitante").addEventListener("change", function() {
         showSchool("visitante");
     });
+
+    document.getElementById("save_result").addEventListener("click", function(event) {
+        event.preventDefault();
+        saveResult();
+    })
 
     /**
      * Suma un gol al equipo seleccionado
@@ -201,6 +207,7 @@ if(document.getElementById("tablero_futbol")) {
                         min = 0;
                         sec = 0;
                         stopTimer();
+                        enableSaveButton();
                     }
                 }
             }
@@ -208,7 +215,7 @@ if(document.getElementById("tablero_futbol")) {
             if(!pause) {
                 runTimer();
             }
-        }, 1000);
+        }, deltaTime);
     }
 
     /**
@@ -220,6 +227,15 @@ if(document.getElementById("tablero_futbol")) {
         pause = true;
         if(!restart)
             tocarSilbato();
+    }
+
+    /**
+     * Habilita el boton para guardar el resultado del partido si es que ya terminó
+     */
+    function enableSaveButton() {
+        if(set == 2 && min == 0 && sec == 0) {
+            document.getElementById("save_result").classList = "btn btn-primary gap-2";
+        }
     }
 
     /**
@@ -253,8 +269,8 @@ if(document.getElementById("tablero_futbol")) {
      * Arma la lista de robots en los select de local y visitante
      */
     function llenarRobotSelectors() {
-        document.getElementById("robot_id_local").innerHTML = '<option value="-1">Seleccione un robot...</option>';
-        document.getElementById("robot_id_visitante").innerHTML = '<option value="-1">Seleccione un robot...</option>';
+        document.getElementById("robot_id_local").innerHTML = '<option value="-1">Seleccione un equipo...</option>';
+        document.getElementById("robot_id_visitante").innerHTML = '<option value="-1">Seleccione un equipo...</option>';
         for(let i=0; i<robots.length; i++) {
             document.getElementById("robot_id_local").innerHTML += '<option value="'+robots[i].id+'" title="'+robots[i].school.name+'">'+robots[i].name+'</option>';
             document.getElementById("robot_id_visitante").innerHTML += '<option value="'+robots[i].id+'" title="'+robots[i].school.name+'">'+robots[i].name+'</option>';
@@ -298,5 +314,13 @@ if(document.getElementById("tablero_futbol")) {
             }
         }
         return null;
+    }
+
+    /**
+     * Intenta guardar el resultado mediante AJAX
+     * Si falla, muestra un mensaje en pantalla
+     */
+    function saveResult() {
+        console.log('asd');
     }
 }

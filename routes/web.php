@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TableroController;
 use App\Http\Controllers\RobotController;
+use App\Http\Controllers\GameController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,3 +38,5 @@ Route::get('/tablero-futbol', [TableroController::class, 'tableroFutbol'])->name
 /** ROBOTS */
 Route::resource('/robot', RobotController::class)->middleware(['auth']);
 Route::get('/get-robots-for-scoreboard', [RobotController::class, 'getForScoreboard'])->middleware(['auth'])->name('robot.get-for-scorebard');
+/** GAMES */
+Route::resource('/games', GameController::class)->middleware(['auth']);

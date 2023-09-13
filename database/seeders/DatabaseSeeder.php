@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             RoleUserSeeder::class,
             SchoolSeeder::class,
+            RobotSeeder::class,
         ]);
     }
 }

@@ -24,7 +24,7 @@
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <p class="my-3 fs-4" id="school_local">-- Escuela --</p>
+                        <p class="my-3 fs-4" id="school_local" title="Muestra la escuela del equipo local una vez seleccionado">-- Escuela --</p>
                     </div>
                 </div>
             </div>
@@ -32,7 +32,7 @@
             <div class="col-md-4 px-3 py-2 mt-3">
                 <div class="row white-border py-4" id="scoreboard">
                     <div class="col-md-12 mt-1 mb-3">
-                    <a href="#" class="btn" id="set_title_toggler"><h3 class="color-futbol" id="title_set">1° TIEMPO</h3></a>
+                    <a href="#" class="btn" id="set_title_toggler" title="Click para alternar entre primer y segundo tiempo"><h3 class="color-futbol" id="title_set">1° TIEMPO</h3></a>
                         <div class="card mt-4">
                             <div class="card-body p-0">
                                 <h1 class="text-futbol" id="time">5:00</h1>
@@ -40,13 +40,16 @@
                         </div>
                     </div>
                     <div class="col-sm-4">
-                        <a href="#" class="btn btn-outline-secondary" id="restart"><i class="fa-solid fa-clock-rotate-left"></i></a>
+                        <a href="#" class="btn btn-outline-secondary" id="restart" title="Reiniciar reloj y contadores"><i class="fa-solid fa-clock-rotate-left"></i></a>
                     </div>
                     <div class="col-sm-4 d-grid">
-                        <a href="#" class="btn btn-success" id="play_pause"><i class="fa-solid fa-play"></i></a>
+                        <a href="#" class="btn btn-success" id="play_pause" title="Iniciar/pausar partido"><i class="fa-solid fa-play"></i></a>
                     </div>
                     <div class="col-sm-4">
-                        <a href="#" class="btn" id="set_toggler"><h4 class="color-futbol mb-0" id="set">1 / 2</h4></a>
+                        <a href="#" class="btn" id="set_toggler" title="Click para alternar entre primer y segundo tiempo"><h4 class="color-futbol mb-0" id="set">1 / 2</h4></a>
+                    </div>
+                    <div class="col-md-12 d-grid mt-3" title="Guarda el resultado de un partido una vez finalizado">
+                        <a href="#" class="btn btn-secondary gap-2 disabled" id="save_result"><i class="fa-solid fa-floppy-disk"></i> Guardar Resultado</a>
                     </div>
                 </div>
             </div>
@@ -73,7 +76,7 @@
                         <a href="#" id="anular_visitante" class="btn btn-outline-secondary btn-x mt-2"><i class="fa-solid fa-circle-minus"></i></a>
                     </div>
                     <div class="col-md-12">
-                        <p class="my-3 fs-4" id="school_visitante">-- Escuela --</p>
+                        <p class="my-3 fs-4" id="school_visitante" title="Muestra la escuela del equipo visitante una vez seleccionado">-- Escuela --</p>
                     </div>
                 </div>
             </div>
