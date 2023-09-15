@@ -51,6 +51,7 @@
                     </div>
                     <div class="col-md-12 d-grid mt-3" title="Guarda el resultado de un partido una vez finalizado">
                         <a href="#" class="btn btn-secondary gap-2 disabled" id="save_result"><i class="fa-solid fa-floppy-disk"></i> Guardar Resultado</a>
+                        <input type="hidden" id="game_id" value="-1">
                     </div>
                 </div>
             </div>

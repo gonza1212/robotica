@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             RoleUserSeeder::class,
             SchoolSeeder::class,
-            RobotSeeder::class,
+            //RobotSeeder::class, // comentado para competencia, descomentar para pruebas
         ]);
     }
 }
