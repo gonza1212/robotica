@@ -14,7 +14,7 @@
 
 .text-futbol {
     font-family: clock;
-    font-size: 10em;
+    font-size: 6em;
     text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.75);
 }
 
@@ -42,7 +42,7 @@
 }
 
 #time {
-    font-size: 8em;
+    font-size: 5em;
 }
 
 .input-futbol {
@@ -50,7 +50,7 @@
     border: none;
     width: 100%;
     text-align: center;
-    font-size: 2.5em;
+    font-size: 1.5em;
     font-weight: bold;
 }
 

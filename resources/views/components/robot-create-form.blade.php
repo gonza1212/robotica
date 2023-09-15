@@ -19,7 +19,7 @@
         <label for="code" class="form-label">Código:</label>
         <select name="school_id" id="school_id" class="form-control">
             @foreach($schools as $s)
-            <option value="{{ $s->id }}" @if(old('school_id') == $s->id) selected @endif>{{ $s->name }}</option>
+            <option value="{{ $s->id }}" @if(old('school_id') == $s->id) selected @endif>{{ $s->name }} - {{ $s->description }}</option>
             @endforeach
         </select>
     </div>

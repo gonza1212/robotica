@@ -10,7 +10,7 @@ if(document.getElementById("tablero_futbol")) {
     var plus = new Audio('./sounds/beep1.wav');
     var minus = new Audio('./sounds/beep2.wav');
     var robots;
-    var deltaTime = 20;
+    var deltaTime = 1000;
 
     /**
      * Recuperar robots desde BD
@@ -308,7 +308,10 @@ if(document.getElementById("tablero_futbol")) {
      * Muestra la escuela segun el equipo elegido
      */
     function showSchool(team) {
-        document.getElementById("school_"+team).innerText = (getRobotById(document.getElementById("robot_id_"+team).value) != null ? getRobotById(document.getElementById("robot_id_"+team).value).school.name : "-- Escuela --");
+        document.getElementById("school_"+team).innerText = 
+        (getRobotById(document.getElementById("robot_id_"+team).value) != null ? 
+        getRobotById(document.getElementById("robot_id_"+team).value).school.name + "\n" + getRobotById(document.getElementById("robot_id_"+team).value).school.description :
+         "-- Escuela --");
     }
 
     /**
